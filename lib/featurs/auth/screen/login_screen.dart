@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:web/featurs/auth/screen/signup_screen.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
@@ -32,10 +33,10 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Center(
-              child: SvgPicture.asset(
-                'assets/logo.svg',
+              child: Image.asset(
+                'assets/logos.png',
                 height: 80,
-              ),
+              )
             ),
             const SizedBox(height: 25),
             const Center(
@@ -170,7 +171,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const SignupScreen()),
+                      );
+                  },
                   child: const Text(
                     "Sign up",
                     style: TextStyle(

@@ -33,10 +33,10 @@ class _ForgotScreenState extends State<ForgotScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Center(
-              child: SvgPicture.asset(
-                'assets/logo.svg',
+              child: Image.asset(
+                'assets/logos.png',
                 height: 80,
-              ),
+              )
             ),
             const SizedBox(height: 25),
             const Center(
