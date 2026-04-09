@@ -22,11 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor:Color(0xff856DAD) ,
-        title: Text("Sign in ", style:
-        TextStyle(color: Colors.white),
-      ),
-      ),
       body: CustomScreen(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

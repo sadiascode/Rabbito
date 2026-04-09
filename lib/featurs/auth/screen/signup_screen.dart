@@ -20,11 +20,6 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor:Color(0xff856DAD) ,
-        title: Text("Sign Up ", style:
-        TextStyle(color: Colors.white),
-        ),
-      ),
       body: CustomScreen(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

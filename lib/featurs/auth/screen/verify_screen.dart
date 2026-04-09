@@ -23,11 +23,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(backgroundColor:Color(0xff856DAD) ,
-        title: Text("Verify Screen ", style:
-        TextStyle(color: Colors.white),
-        ),
-      ),
       body: CustomScreen(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
