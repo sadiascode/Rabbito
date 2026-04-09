@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
@@ -34,13 +35,20 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       ),
       body: CustomScreen(
-        svgPath: 'assets/logo.svg', 
+        svgPath: '',
         svgHeight: 180,
         svgWidth: 130,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            Center(
+              child: SvgPicture.asset(
+                'assets/logo.svg',
+                height: 80,
+              ),
+            ),
+            const SizedBox(height: 25),
             const Center(
               child: Text(
                 "Login to Account",

@@ -25,14 +25,14 @@ class _CustomScreenState extends State<CustomScreen> {
     return Stack(
       children: [
         Container(
-          height: 300,
+          height: 100,
           width: double.infinity,
           decoration: const BoxDecoration(
           ),
         ),
 
         Positioned(
-          top: 50,
+          top: 40,
           left: 0,
           right: 0,
           child: Center(
