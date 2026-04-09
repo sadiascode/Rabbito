@@ -27,8 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       ),
       body: CustomScreen(
-        svgHeight: 80,
-        svgWidth: 80,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

@@ -29,8 +29,6 @@ class _VerifyScreenState extends State<VerifyScreen> {
         ),
       ),
       body: CustomScreen(
-        svgHeight: 80,
-        svgWidth: 80,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

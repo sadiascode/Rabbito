@@ -28,9 +28,6 @@ class _ForgotScreenState extends State<ForgotScreen> {
         ),
       ),
       body: CustomScreen(
-
-        svgHeight: 80,
-        svgWidth: 80,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,

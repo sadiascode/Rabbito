@@ -27,8 +27,6 @@ class _ResetScreenState extends State<ResetScreen> {
         ),
       ),
       body: CustomScreen(
-        svgHeight: 80,
-        svgWidth: 80,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
