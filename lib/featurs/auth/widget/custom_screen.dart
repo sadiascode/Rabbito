@@ -32,13 +32,13 @@ class _CustomScreenState extends State<CustomScreen> {
         ),
 
         Positioned(
-          top: 40,
+          top: 0,
           left: 0,
           right: 0,
           child: Center(
             child: SvgPicture.asset(
               widget.svgPath,
-              height: widget.svgHeight * 0.4, 
+              height: widget.svgHeight * 0.3,
               width: widget.svgWidth * 0.4,
             ),
           ),
@@ -48,7 +48,7 @@ class _CustomScreenState extends State<CustomScreen> {
         Align(
           alignment: Alignment.bottomCenter,
           child: FractionallySizedBox(
-            heightFactor: 0.75,
+            heightFactor: 0.98,
             widthFactor: 1.0,
             child: Container(
               padding: const EdgeInsets.only(top: 32),

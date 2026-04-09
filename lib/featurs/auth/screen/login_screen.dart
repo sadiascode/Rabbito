@@ -15,15 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _rememberMe = false;
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +28,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: CustomScreen(
         svgPath: '',
-        svgHeight: 180,
-        svgWidth: 130,
+        svgHeight: 80,
+        svgWidth: 80,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -83,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 8),
             CustomTextfield(
               hintText: "Enter your name",
-              controller: _nameController,
             ),
             const SizedBox(height: 20),
             
@@ -99,7 +90,6 @@ class _LoginScreenState extends State<LoginScreen> {
             CustomTextfield(
               hintText: "*********",
               isPassword: true,
-              controller: _passwordController,
             ),
             const SizedBox(height: 16),
             
