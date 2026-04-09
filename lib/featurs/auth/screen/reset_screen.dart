@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:web/featurs/auth/screen/login_screen.dart';
 import 'package:web/featurs/auth/screen/verify_screen.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
@@ -8,13 +9,13 @@ import '../widget/custom_textfield.dart';
 
 
 class ResetScreen extends StatefulWidget {
-  const ForgotScreen({super.key});
+  const ResetScreen({super.key});
 
   @override
-  State<ForgotScreen> createState() => _ForgotScreenState();
+  State<ResetScreen> createState() => _ResetScreenState();
 }
 
-class _ForgotScreenState extends State<ForgotScreen> {
+class _ResetScreenState extends State<ResetScreen> {
   bool _rememberMe = false;
 
 
@@ -23,7 +24,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(backgroundColor:Color(0xff856DAD) ,
-        title: Text("Forget Password ", style:
+        title: Text("Reset Password ", style:
         TextStyle(color: Colors.white),
         ),
       ),
@@ -44,7 +45,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             const SizedBox(height: 25),
             const Center(
               child: Text(
-                "Forget Password?",
+                "Set a new password",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -55,7 +56,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             const SizedBox(height: 8),
             const Center(
               child: Text(
-                "Please enter your email to get verification code",
+                "Create a new password. Ensure it differs from previous ones for security",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 13,
@@ -66,7 +67,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             const SizedBox(height: 32),
 
             const Text(
-              "Email address",
+              "New Password",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -75,7 +76,23 @@ class _ForgotScreenState extends State<ForgotScreen> {
             ),
             const SizedBox(height: 8),
             CustomTextfield(
-              hintText: "admin_tee@gmail.com",
+              hintText: "******",
+              isPassword: true,
+            ),
+            const SizedBox(height: 20),
+
+            const Text(
+              "Confirm Password",
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 8),
+            CustomTextfield(
+              hintText: "******",
+              isPassword: true,
             ),
             const SizedBox(height: 20),
 
@@ -86,7 +103,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
 
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const VerifyScreen()),
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
                 );
               },
             ),

@@ -13,7 +13,7 @@ class Rabbito extends StatelessWidget {
     return const MaterialApp(
       title: "Rabbito",
       debugShowCheckedModeBanner: false,
-      home: VerifyScreen(),
+      home: LoginScreen(),
     );
   }
 }

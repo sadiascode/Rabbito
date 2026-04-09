@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:web/featurs/auth/screen/reset_screen.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
@@ -88,7 +89,12 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
             CustomButton(
               text: "Continue",
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ResetScreen()),
+                );
+              },
             ),
 
             const SizedBox(height: 24),
