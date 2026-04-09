@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:web/featurs/auth/screen/login_screen.dart';
-import 'package:web/featurs/auth/screen/verify_screen.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
@@ -16,7 +15,6 @@ class ResetScreen extends StatefulWidget {
 }
 
 class _ResetScreenState extends State<ResetScreen> {
-  bool _rememberMe = false;
 
 
   @override
@@ -29,11 +27,10 @@ class _ResetScreenState extends State<ResetScreen> {
         ),
       ),
       body: CustomScreen(
-        svgPath: '',
         svgHeight: 80,
         svgWidth: 80,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Center(
@@ -66,12 +63,15 @@ class _ResetScreenState extends State<ResetScreen> {
             ),
             const SizedBox(height: 32),
 
-            const Text(
-              "New Password",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "New Password",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
               ),
             ),
             const SizedBox(height: 8),
@@ -81,12 +81,15 @@ class _ResetScreenState extends State<ResetScreen> {
             ),
             const SizedBox(height: 20),
 
-            const Text(
-              "Confirm Password",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Confirm Password",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
               ),
             ),
             const SizedBox(height: 8),

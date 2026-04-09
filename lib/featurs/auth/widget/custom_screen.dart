@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomScreen extends StatefulWidget {
-  final String svgPath;
   final double svgHeight;
   final double svgWidth;
   final Widget child;
 
   const CustomScreen({
     super.key,
-    required this.svgPath,
     required this.svgHeight,
     required this.svgWidth,
     required this.child,
@@ -37,7 +35,6 @@ class _CustomScreenState extends State<CustomScreen> {
           right: 0,
           child: Center(
             child: SvgPicture.asset(
-              widget.svgPath,
               height: widget.svgHeight * 0.3,
               width: widget.svgWidth * 0.4,
             ),
@@ -46,18 +43,16 @@ class _CustomScreenState extends State<CustomScreen> {
 
         // Main content card
         Align(
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.center,
           child: FractionallySizedBox(
             heightFactor: 0.98,
             widthFactor: 1.0,
             child: Container(
-              padding: const EdgeInsets.only(top: 32),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 32),
               decoration: const BoxDecoration(
                 color: Color(0xFFF7F7F7),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(32),
-                  topRight: Radius.circular(32),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(32)),
               ),
               child: SingleChildScrollView(
                 child: Padding(

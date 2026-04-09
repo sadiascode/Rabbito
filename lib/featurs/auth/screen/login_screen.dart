@@ -27,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       ),
       body: CustomScreen(
-        svgPath: '',
         svgHeight: 80,
         svgWidth: 80,
         child: Column(

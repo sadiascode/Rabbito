@@ -28,11 +28,11 @@ class _ForgotScreenState extends State<ForgotScreen> {
         ),
       ),
       body: CustomScreen(
-        svgPath: '',
+
         svgHeight: 80,
         svgWidth: 80,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Center(
@@ -65,12 +65,15 @@ class _ForgotScreenState extends State<ForgotScreen> {
             ),
             const SizedBox(height: 32),
 
-            const Text(
-              "Email address",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Email address",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
               ),
             ),
             const SizedBox(height: 8),
