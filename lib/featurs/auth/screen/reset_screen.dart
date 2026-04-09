@@ -7,7 +7,7 @@ import '../../../common/custom_color.dart';
 import '../widget/custom_textfield.dart';
 
 
-class ForgotScreen extends StatefulWidget {
+class ResetScreen extends StatefulWidget {
   const ForgotScreen({super.key});
 
   @override
@@ -84,10 +84,10 @@ class _ForgotScreenState extends State<ForgotScreen> {
               text: "Continue",
               onTap: () {
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const VerifyScreen()),
-                  );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const VerifyScreen()),
+                );
               },
             ),
 

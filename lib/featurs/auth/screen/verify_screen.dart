@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:web/featurs/auth/screen/verify_screen.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
 import '../widget/custom_textfield.dart';
 
 
-class ForgotScreen extends StatefulWidget {
-  const ForgotScreen({super.key});
+class VerifyScreen extends StatefulWidget {
+  const VerifyScreen({super.key});
 
   @override
-  State<ForgotScreen> createState() => _ForgotScreenState();
+  State<VerifyScreen> createState() => _VerifyScreenState();
 }
 
-class _ForgotScreenState extends State<ForgotScreen> {
+class _VerifyScreenState extends State<VerifyScreen> {
   bool _rememberMe = false;
 
 
@@ -23,7 +23,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(backgroundColor:Color(0xff856DAD) ,
-        title: Text("Forget Password ", style:
+        title: Text("Verify Screen ", style:
         TextStyle(color: Colors.white),
         ),
       ),
@@ -44,7 +44,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             const SizedBox(height: 25),
             const Center(
               child: Text(
-                "Forget Password?",
+                "Check your Email",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
             const SizedBox(height: 8),
             const Center(
               child: Text(
-                "Please enter your email to get verification code",
+                "We sent a code to your email address @. Please check your email for the 5 digit code.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 13,
@@ -65,30 +65,30 @@ class _ForgotScreenState extends State<ForgotScreen> {
             ),
             const SizedBox(height: 32),
 
-            const Text(
-              "Email address",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8),
-            CustomTextfield(
-              hintText: "admin_tee@gmail.com",
+            PinCodeTextField(
+              length: 6,
+              obscureText: false,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              keyboardType: TextInputType.number,
+              animationType: AnimationType.fade,
+              pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(8),
+                  fieldHeight: 50,
+                  fieldWidth: 40,
+                  activeColor: Colors.green,
+                  selectedColor: Colors.black,
+                  inactiveColor: Colors.grey),
+              animationDuration: const Duration(milliseconds: 300),
+              // controller: OTPController,
+              appContext: context,
             ),
             const SizedBox(height: 20),
 
 
             CustomButton(
               text: "Continue",
-              onTap: () {
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const VerifyScreen()),
-                  );
-              },
+              onTap: () {},
             ),
 
             const SizedBox(height: 24),

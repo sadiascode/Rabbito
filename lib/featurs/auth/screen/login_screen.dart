@@ -146,7 +146,8 @@ class _LoginScreenState extends State<LoginScreen> {
             
             CustomButton(
               text: "Sign in",
-              onTap: () {},
+              onTap: () {
+              },
             ),
             
             const SizedBox(height: 24),
