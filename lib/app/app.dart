@@ -8,8 +8,7 @@ class Rabbito extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-
+    return const MaterialApp(
       title: "Rabbito",
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
