@@ -16,8 +16,6 @@ class CustomBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final centerIndex = tabs.indexWhere((e) => e.isCenter);
-
     return Container(
       height: 90,
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -34,13 +32,13 @@ class CustomBottomNav extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(tabs.length, (i) {
-          return _navItem(i, i == centerIndex);
+          return _navItem(i);
         }),
       ),
     );
   }
 
-  Widget _navItem(int index, bool isCenter) {
+  Widget _navItem(int index) {
     final isActive = currentIndex == index;
 
     return GestureDetector(
@@ -57,28 +55,23 @@ class CustomBottomNav extends StatelessWidget {
             decoration: BoxDecoration(
               color: isActive ? AppColors.primary : Colors.transparent,
               borderRadius: BorderRadius.circular(16),
-              boxShadow: isActive ? [
+              boxShadow: isActive
+                  ? [
                 BoxShadow(
                   color: AppColors.primary.withOpacity(0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 4),
                 )
-              ] : [],
+              ]
+                  : [],
             ),
             child: Center(
-              child: Theme(
-                data: ThemeData(
-                  iconTheme: IconThemeData(
-                    color: isActive ? Colors.white : Colors.grey.shade400,
-                  ),
+              child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  isActive ? Colors.white : Colors.grey.shade400,
+                  BlendMode.srcIn,
                 ),
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                    isActive ? Colors.white : Colors.grey.shade400,
-                    BlendMode.srcIn,
-                  ),
-                  child: tabs[index].icon,
-                ),
+                child: tabs[index].icon,
               ),
             ),
           ),

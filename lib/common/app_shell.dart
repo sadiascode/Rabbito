@@ -7,7 +7,7 @@ import 'custom_color.dart';
 class AppShell extends StatefulWidget {
   final int initialIndex;
 
-  const AppShell({super.key, this.initialIndex = 2});
+  const AppShell({super.key, this.initialIndex = 0});
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -15,14 +15,14 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   late int _currentIndex;
-  final List<BottomTabItem> _allTabs = bottomTabs;
+  final List<BottomTabItem> _allLogicalTabs = allLogicalTabs;
   late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
-    _pages = _allTabs.map((tab) => tab.page).toList();
+    _pages = _allLogicalTabs.map((tab) => tab.page).toList();
   }
 
   void _onTabTapped(int index) {
@@ -39,8 +39,7 @@ class _AppShellState extends State<AppShell> {
       builder: (context, constraints) {
         final bool isDesktop = constraints.maxWidth >= 900;
 
-        // Safety: If switching to mobile while on a desktop-only screen, revert to Home (index 0)
-        if (!isDesktop && _allTabs[_currentIndex].isWebOnly) {
+        if (!isDesktop && _allLogicalTabs[_currentIndex].isWebOnly) {
           _currentIndex = 0;
         }
 
@@ -52,7 +51,7 @@ class _AppShellState extends State<AppShell> {
                   selectedIndex: _currentIndex,
                   onDestinationSelected: _onTabTapped,
                   labelType: NavigationRailLabelType.all,
-                  minWidth: 100, // Widened sidebar
+                  minWidth: 200,
                   backgroundColor: AppColors.cardBackground,
                   selectedIconTheme: const IconThemeData(color: Colors.white),
                   unselectedIconTheme: IconThemeData(color: Colors.grey.shade400),
@@ -76,7 +75,7 @@ class _AppShellState extends State<AppShell> {
                       height: 40,
                     ),
                   ),
-                  destinations: _allTabs.map((tab) {
+                  destinations: desktopTabs.map((tab) {
                     return NavigationRailDestination(
                       icon: tab.icon,
                       selectedIcon: tab.icon,
@@ -96,9 +95,8 @@ class _AppShellState extends State<AppShell> {
           );
         }
 
-        // Mobile Layout: Filter tabs to hide web-only features
-        final mobileTabs = _allTabs.where((t) => !t.isWebOnly).toList();
-        final mobileCurrentIndex = mobileTabs.indexOf(_allTabs[_currentIndex]);
+        // Mobile Layout: Use the custom mobileTabs order
+        final mobileCurrentIndex = mobileTabs.indexWhere((tab) => _allLogicalTabs.indexOf(tab) == _currentIndex || tab.label == _allLogicalTabs[_currentIndex].label);
 
         return Scaffold(
           body: IndexedStack(
@@ -109,7 +107,8 @@ class _AppShellState extends State<AppShell> {
             tabs: mobileTabs,
             currentIndex: mobileCurrentIndex >= 0 ? mobileCurrentIndex : 0,
             onTap: (mobileIndex) {
-              final globalIndex = _allTabs.indexOf(mobileTabs[mobileIndex]);
+              final tappedTab = mobileTabs[mobileIndex];
+              final globalIndex = _allLogicalTabs.indexWhere((t) => t.label == tappedTab.label);
               _onTabTapped(globalIndex);
             },
           ),
@@ -171,7 +170,7 @@ class SubPageScaffold extends StatelessWidget {
                   indicatorShape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  destinations: bottomTabs.map((tab) {
+                  destinations: desktopTabs.map((tab) {
                     return NavigationRailDestination(
                       icon: tab.icon,
                       selectedIcon: tab.icon,
@@ -192,9 +191,8 @@ class SubPageScaffold extends StatelessWidget {
           );
         }
 
-        // Mobile Layout: Filter tabs and translate index
-        final mobileTabs = bottomTabs.where((t) => !t.isWebOnly).toList();
-        final mobileCurrentIndex = mobileTabs.indexOf(bottomTabs[parentTabIndex]);
+        // Mobile Layout: Use the custom mobileTabs order and translate index
+        final mobileCurrentIndex = mobileTabs.indexWhere((tab) => allLogicalTabs.indexOf(tab) == parentTabIndex || tab.label == allLogicalTabs[parentTabIndex].label);
 
         return Scaffold(
           backgroundColor: backgroundColor ?? const Color(0xFFFFFAF7),
@@ -204,7 +202,8 @@ class SubPageScaffold extends StatelessWidget {
             tabs: mobileTabs,
             currentIndex: mobileCurrentIndex >= 0 ? mobileCurrentIndex : 0,
             onTap: (mobileIndex) {
-              final globalIndex = bottomTabs.indexOf(mobileTabs[mobileIndex]);
+              final tappedTab = mobileTabs[mobileIndex];
+              final globalIndex = allLogicalTabs.indexWhere((t) => t.label == tappedTab.label);
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                   builder: (_) => AppShell(initialIndex: globalIndex),
