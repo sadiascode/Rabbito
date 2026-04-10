@@ -95,7 +95,6 @@ class _AppShellState extends State<AppShell> {
           );
         }
 
-        // Mobile Layout: Use the custom mobileTabs order
         final mobileCurrentIndex = mobileTabs.indexWhere((tab) => _allLogicalTabs.indexOf(tab) == _currentIndex || tab.label == _allLogicalTabs[_currentIndex].label);
 
         return Scaffold(
@@ -191,8 +190,9 @@ class SubPageScaffold extends StatelessWidget {
           );
         }
 
-        // Mobile Layout: Use the custom mobileTabs order and translate index
         final mobileCurrentIndex = mobileTabs.indexWhere((tab) => allLogicalTabs.indexOf(tab) == parentTabIndex || tab.label == allLogicalTabs[parentTabIndex].label);
+
+
 
         return Scaffold(
           backgroundColor: backgroundColor ?? const Color(0xFFFFFAF7),

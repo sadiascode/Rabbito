@@ -10,8 +10,7 @@ import '../../featurs/home/screen/home_screen.dart';
 import '../../featurs/profile/screen/profile_screen.dart';
 import 'bottom_tab_item.dart';
 
-/// The logical master list of all available screens.
-/// DO NOT change this order as it defines the index in IndexedStack.
+
 final List<BottomTabItem> allLogicalTabs = [
   BottomTabItem(
     label: "Home",
