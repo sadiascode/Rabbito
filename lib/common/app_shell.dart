@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../featurs/connection_screen/screen/connection_screen.dart';
+import '../featurs/home/screen/home_screen.dart';
+import '../featurs/planner/screen/planner_screen.dart';
+import '../featurs/pricing/screen/pricing_screen.dart';
+import '../featurs/profile/screen/profile_screen.dart';
 import 'navbar/bottom_tab_item.dart';
 import 'navbar/custom_bottom_nav.dart';
 
@@ -27,29 +32,29 @@ class _AppShellState extends State<AppShell> {
     _bottomTabs = [
       BottomTabItem(
         label: "Home",
-        icon: SvgPicture.asset("assets/homes.svg"),
-        page: const HomeScreenContent(),
+        icon: SvgPicture.asset("assets/chat.svg"),
+        page: HomeScreen(),
         isCenter: true,
       ),
       BottomTabItem(
-        label: "Medicine",
-        icon: SvgPicture.asset("assets/medicine.svg"),
-        page: const MedicineScreenContent(),
-      ),
-      BottomTabItem(
-        label: "Doctor",
-        icon: SvgPicture.asset("assets/doctor.svg"),
-        page: const DoctorScreenContent(),
-      ),
-      BottomTabItem(
-        label: "Chat",
+        label: "Connection",
         icon: SvgPicture.asset("assets/chat.svg"),
-        page: const ChatsScreenContent(),
+        page: ConnectionScreen(),
+      ),
+      BottomTabItem(
+        label: "Planner",
+        icon:SvgPicture.asset("assets/chat.svg"),
+        page: PlannerScreen(),
+      ),
+      BottomTabItem(
+          label: "Pricing",
+          icon: SvgPicture.asset("assets/chat.svg"),
+          page: PricingScreen()
       ),
       BottomTabItem(
         label: "Profile",
         icon: SvgPicture.asset("assets/profile.svg"),
-        page: const ProfileScreenContent(),
+        page: ProfileScreen(),
       ),
     ];
 
