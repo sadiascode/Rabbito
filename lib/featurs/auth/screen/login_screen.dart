@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:web/featurs/auth/screen/signup_screen.dart';
 import 'package:web/featurs/auth/widget/custom_screen.dart';
+import 'package:web/featurs/home/screen/home_screen.dart';
 import '../../../common/custom_button.dart';
 import '../../../common/custom_color.dart';
 import '../widget/custom_textfield.dart';
@@ -139,7 +140,11 @@ class _LoginScreenState extends State<LoginScreen> {
             
             CustomButton(
               text: "Sign in",
-              onTap: () {
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HomeScreen()),
+                  );
               },
             ),
             
