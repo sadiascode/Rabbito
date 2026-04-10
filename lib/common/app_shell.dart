@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../featurs/connection_screen/screen/connection_screen.dart';
-import '../featurs/home/screen/home_screen.dart';
-import '../featurs/planner/screen/planner_screen.dart';
-import '../featurs/pricing/screen/pricing_screen.dart';
-import '../featurs/profile/screen/profile_screen.dart';
+import 'navbar/bottom_tabs.dart';
 import 'navbar/bottom_tab_item.dart';
 import 'navbar/custom_bottom_nav.dart';
 
 class AppShell extends StatefulWidget {
   final int initialIndex;
 
-  const AppShell({super.key, this.initialIndex = 0});
+  const AppShell({super.key, this.initialIndex = 2});
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -20,45 +14,14 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   late int _currentIndex;
-  late final List<BottomTabItem> _bottomTabs;
+  final List<BottomTabItem> _tabs = bottomTabs;
   late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
-
-
-    _bottomTabs = [
-      BottomTabItem(
-        label: "Home",
-        icon: SvgPicture.asset("assets/chat.svg"),
-        page: HomeScreen(),
-        isCenter: true,
-      ),
-      BottomTabItem(
-        label: "Connection",
-        icon: SvgPicture.asset("assets/chat.svg"),
-        page: ConnectionScreen(),
-      ),
-      BottomTabItem(
-        label: "Planner",
-        icon:SvgPicture.asset("assets/chat.svg"),
-        page: PlannerScreen(),
-      ),
-      BottomTabItem(
-          label: "Pricing",
-          icon: SvgPicture.asset("assets/chat.svg"),
-          page: PricingScreen()
-      ),
-      BottomTabItem(
-        label: "Profile",
-        icon: SvgPicture.asset("assets/profile.svg"),
-        page: ProfileScreen(),
-      ),
-    ];
-
-    _pages = _bottomTabs.map((tab) => tab.page).toList();
+    _pages = _tabs.map((tab) => tab.page).toList();
   }
 
   void _onTabTapped(int index) {
@@ -77,7 +40,7 @@ class _AppShellState extends State<AppShell> {
         children: _pages,
       ),
       bottomNavigationBar: CustomBottomNav(
-        tabs: _bottomTabs,
+        tabs: _tabs,
         currentIndex: _currentIndex,
         onTap: _onTabTapped,
       ),
@@ -99,36 +62,6 @@ class SubPageScaffold extends StatelessWidget {
     this.backgroundColor,
   });
 
-
-  static List<BottomTabItem> get _bottomTabs => [
-    BottomTabItem(
-      label: "Home",
-      icon: SvgPicture.asset("assets/homes.svg"),
-      page: const SizedBox(),
-      isCenter: true,
-    ),
-    BottomTabItem(
-      label: "Medicine",
-      icon: SvgPicture.asset("assets/medicine.svg"),
-      page: const SizedBox(),
-    ),
-    BottomTabItem(
-      label: "Doctor",
-      icon: SvgPicture.asset("assets/doctor.svg"),
-      page: const SizedBox(),
-    ),
-    BottomTabItem(
-      label: "Chat",
-      icon: SvgPicture.asset("assets/chat.svg"),
-      page: const SizedBox(),
-    ),
-    BottomTabItem(
-      label: "Profile",
-      icon: SvgPicture.asset("assets/profile.svg"),
-      page: const SizedBox(),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,7 +69,7 @@ class SubPageScaffold extends StatelessWidget {
       appBar: appBar,
       body: body,
       bottomNavigationBar: CustomBottomNav(
-        tabs: _bottomTabs,
+        tabs: bottomTabs,
         currentIndex: parentTabIndex,
         onTap: (index) {
           Navigator.of(context).pushAndRemoveUntil(

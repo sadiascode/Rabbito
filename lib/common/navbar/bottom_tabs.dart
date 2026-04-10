@@ -1,4 +1,4 @@
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 import 'package:web/featurs/planner/screen/planner_screen.dart';
 import 'package:web/featurs/pricing/screen/pricing_screen.dart';
 
@@ -9,29 +9,29 @@ import 'bottom_tab_item.dart';
 
 final List<BottomTabItem> bottomTabs = [
   BottomTabItem(
-    label: "Home",
-    icon: SvgPicture.asset("assets/chat.svg"),
-    page: HomeScreen(),
-    isCenter: true,
+    label: "Planner",
+    icon: const Icon(Icons.calendar_month_rounded),
+    page: const PlannerScreen(),
   ),
   BottomTabItem(
     label: "Connection",
-    icon: SvgPicture.asset("assets/chat.svg"),
-    page: ConnectionScreen(),
+    icon: const Icon(Icons.people_alt_rounded),
+    page: const ConnectionScreen(),
   ),
   BottomTabItem(
-    label: "Planner",
-    icon:SvgPicture.asset("assets/chat.svg"),
-    page: PlannerScreen(),
+    label: "Home",
+    icon: const Icon(Icons.home_rounded),
+    page: const HomeScreen(),
+    isCenter: true,
   ),
   BottomTabItem(
     label: "Pricing",
-    icon: SvgPicture.asset("assets/chat.svg"),
-    page: PricingScreen()
-),
+    icon: const Icon(Icons.account_balance_wallet_rounded),
+    page: const PricingScreen()
+  ),
   BottomTabItem(
     label: "Profile",
-    icon: SvgPicture.asset("assets/profile.svg"),
-    page: ProfileScreen(),
+    icon: const Icon(Icons.person_rounded),
+    page: const ProfileScreen(),
   ),
 ];

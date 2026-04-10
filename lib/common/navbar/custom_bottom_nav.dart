@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../custom_color.dart';
 import 'bottom_tab_item.dart';
 
 class CustomBottomNav extends StatelessWidget {
@@ -25,7 +25,7 @@ class CustomBottomNav extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.1),
+            color: Colors.black.withOpacity(.05),
             blurRadius: 20,
             offset: const Offset(0, -5),
           )
@@ -34,87 +34,63 @@ class CustomBottomNav extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(tabs.length, (i) {
-          if (i == centerIndex) {
-            return _centerButton(i);
-          }
-          return _navItem(i);
+          return _navItem(i, i == centerIndex);
         }),
       ),
     );
   }
 
-  Widget _navItem(int index) {
+  Widget _navItem(int index, bool isCenter) {
     final isActive = currentIndex == index;
 
     return GestureDetector(
       onTap: () => onTap(index),
+      behavior: HitTestBehavior.opaque,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
-            width: isActive ? 65 : 45,
-            height: isActive ? 55 : 45,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            width: isActive ? 60 : 45,
+            height: isActive ? 50 : 45,
             decoration: BoxDecoration(
-              color: isActive ? const Color(0xffE0712D) : Colors.transparent,
-              borderRadius: BorderRadius.circular(14),
+              color: isActive ? AppColors.primary : Colors.transparent,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: isActive ? [
+                BoxShadow(
+                  color: AppColors.primary.withOpacity(0.3),
+                  blurRadius: 8,
+                  offset: const Offset(0, 4),
+                )
+              ] : [],
             ),
             child: Center(
-              child: ColorFiltered(
-                colorFilter: isActive
-                    ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
-                    : const ColorFilter.mode(Colors.transparent, BlendMode.dst),
-                child: tabs[index].icon,
+              child: Theme(
+                data: ThemeData(
+                  iconTheme: IconThemeData(
+                    color: isActive ? Colors.white : Colors.grey.shade400,
+                  ),
+                ),
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    isActive ? Colors.white : Colors.grey.shade400,
+                    BlendMode.srcIn,
+                  ),
+                  child: tabs[index].icon,
+                ),
               ),
             ),
           ),
-          if (!isActive)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                tabs[index].label,
-                style: const TextStyle(fontSize: 11,  color: Color(0xffE0712D)),
-              ),
-            )
-        ],
-      ),
-    );
-  }
-
-  Widget _centerButton(int index) {
-    final isActive = currentIndex == index;
-
-    return GestureDetector(
-      onTap: () => onTap(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
-            width: isActive ? 65 : 45,
-            height: isActive ? 55 : 45,
-            decoration: BoxDecoration(
-              color: isActive ? const Color(0xffE0712D) : Colors.transparent,
-              borderRadius: BorderRadius.circular(15),
-
+          const SizedBox(height: 4),
+          Text(
+            tabs[index].label,
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+              color: isActive ? AppColors.primary : Colors.grey.shade500,
             ),
-            child: Center(
-              child: ColorFiltered(
-                colorFilter: isActive
-                    ? const ColorFilter.mode(Colors.white, BlendMode.srcIn)
-                    : const ColorFilter.mode(Colors.transparent, BlendMode.dst),
-                child: tabs[index].icon,
-              ),
-            ),
-          ),
-          if (!isActive)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                tabs[index].label,
-                style: const TextStyle(fontSize: 11,  color: Color(0xffE0712D)),
-              ),
-            )
+          )
         ],
       ),
     );
