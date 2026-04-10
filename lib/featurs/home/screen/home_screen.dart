@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web/featurs/home/widget/custom_carousel.dart';
 import 'package:web/featurs/home/widget/custom_videos.dart';
 import '../../../common/custom_color.dart';
 import '../widget/custom_projects.dart';
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> pages = [
     CustomProjects(),
     CustomVideos(),
-    CustomProjects(),
+    CustomCarousel(),
     CustomProjects(),
   ];
 
