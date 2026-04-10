@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
-class CustomProjects extends StatelessWidget {
-  CustomProjects({super.key});
+class CustomSnippet extends StatelessWidget {
+  CustomSnippet({super.key});
 
   final List<String> images = [
-    "assets/1st.png",
-    "assets/2nd.png",
     "assets/3rd.png",
-    "assets/5th.png",
     "assets/3rd.png",
-    "assets/2nd.png",
-    "assets/5th.png",
-    "assets/1st.png",
-    "assets/2nd.png",
-    "assets/1st.png",
-    "assets/5th.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
+    "assets/3rd.png",
     "assets/3rd.png",
 
   ];
